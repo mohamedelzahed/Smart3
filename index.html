@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Game | رحلة البادئات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars"></div>
+
+    <div id="startScreen" class="overlay">
+        <div class="start-card">
+            <h1 class="logo-text">SMART<span>GAME</span></h1>
+            <p class="welcome-msg">تحدي تحويل الوحدات والبادئات العلمية</p>
+            <div class="start-chars">
+                
+               <img src="character.gif" alt="طالب" class="student-img"> 
+            </div>
+            <button id="beginGameBtn" class="btn-start">ابدأ التحدي 🚀</button>
+        </div>
+    </div>
+    
+    <div class="game-wrapper hidden" id="mainWrapper">
+        <header class="game-header">
+            <div class="stat-box">المستوى: <span id="level">1</span></div>
+            <h1 class="game-title">التحدي</h1>
+            <div class="stat-box">النقاط: <span id="score">0</span></div>
+        </header>
+
+        <main class="main-game-area">
+            <div class="character-box side-left">
+                <img src="person-man.webp" class="mini-char">
+                
+                <div class="speech-bubble" id="characterSpeech">حول للوحدة المطلوبة!</div>
+            </div>
+
+            <div class="question-zone">
+                <div id="questionCard" class="wooden-card">
+                    </div>
+            </div>
+
+            <div class="character-box side-right">
+                <img src="character.gif" alt="طالب" class="student-img">
+            </div>
+        </main>
+
+        <div id="feedback" class="feedback-text"></div>
+        <div class="options-grid" id="optionsBox"></div>
+
+        <footer class="game-footer">
+            <div class="progress-info">الإنجاز: <span id="correctCount">0</span> / 5</div>
+            <div class="action-buttons">
+                <button id="nextBtn" class="nav-btn next" disabled>التالي ➔</button>
+                <button id="endBtn" class="nav-btn end">إنهاء 🛑</button>
+                <button id="restartBtn" class="nav-btn reset">إعادة 🔄</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

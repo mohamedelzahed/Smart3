@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Smart Game | رحلة البادئات</title>
+    <title>Smart Game | تحدي الـ 10 مستويات</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <div class="stars"></div>
 
     <div id="startScreen" class="overlay">
         <div class="start-card">
             <h1 class="logo-text">SMART<span>GAME</span></h1>
-            <p class="welcome-msg">تحدي تحويل الوحدات والبادئات العلمية</p>
+            <p class="welcome-msg">تخطَّ 10 مستويات لتصبح بطل الفيزياء!</p>
             <div class="start-chars">
-                
-               <img src="character.gif" alt="طالب" class="student-img"> 
+                <img src="https://i.postimg.cc/9MdfYv8p/student-char.png" class="mini-char">
+                <img src="person-man.webp" class="mini-char">
             </div>
             <button id="beginGameBtn" class="btn-start">ابدأ التحدي 🚀</button>
         </div>
@@ -25,25 +23,23 @@
     
     <div class="game-wrapper hidden" id="mainWrapper">
         <header class="game-header">
-            <div class="stat-box">المستوى: <span id="level">1</span></div>
-            <h1 class="game-title">التحدي</h1>
+            <div class="stat-box">المستوى: <span id="level">1</span> / 10</div>
+            <h1 class="game-title">Smart Game</h1>
             <div class="stat-box">النقاط: <span id="score">0</span></div>
         </header>
 
         <main class="main-game-area">
             <div class="character-box side-left">
-                <img src="person-man.webp" class="mini-char">
-                
-                <div class="speech-bubble" id="characterSpeech">حول للوحدة المطلوبة!</div>
+                <img src="https://i.postimg.cc/9MdfYv8p/student-char.png" alt="طالب" class="main-char-img">
+                <div class="speech-bubble" id="characterSpeech">هيا بنا!</div>
             </div>
 
             <div class="question-zone">
-                <div id="questionCard" class="wooden-card">
-                    </div>
+                <div id="questionCard" class="wooden-card"></div>
             </div>
 
             <div class="character-box side-right">
-                <img src="character.gif" alt="طالب" class="student-img">
+                <img src="person-man.webp" alt="رجل" class="main-char-img">
             </div>
         </main>
 
@@ -51,7 +47,7 @@
         <div class="options-grid" id="optionsBox"></div>
 
         <footer class="game-footer">
-            <div class="progress-info">الإنجاز: <span id="correctCount">0</span> / 5</div>
+            <div class="progress-info">الإنجاز في المستوى: <span id="correctCount">0</span> / 5</div>
             <div class="action-buttons">
                 <button id="nextBtn" class="nav-btn next" disabled>التالي ➔</button>
                 <button id="endBtn" class="nav-btn end">إنهاء 🛑</button>

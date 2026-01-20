@@ -1,222 +1,86 @@
-/* إعدادات المتغيرات العامة */
 :root {
     --wood-gradient: linear-gradient(to bottom, #8d6e63, #4e342e);
     --gold: #ffc107;
     --bg-dark: #050b24;
 }
 
-/* ضبط الصفحة بالكامل لتناسب حجم أي جهاز */
 body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg-dark);
-    font-family: 'Cairo', 'Tahoma', sans-serif;
-    color: white;
-    overflow: hidden; /* يمنع التمرير تماماً */
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    direction: rtl;
+    margin: 0; padding: 0; background: var(--bg-dark);
+    font-family: 'Cairo', sans-serif; color: white;
+    overflow: hidden; height: 100vh; width: 100vw;
+    display: flex; justify-content: center; align-items: center; direction: rtl;
 }
 
 .hidden { display: none !important; }
 
-/* واجهة البداية الاحترافية */
+/* الواجهة الافتتاحية */
 .overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(5, 11, 36, 0.95);
     display: flex; justify-content: center; align-items: center; z-index: 1000;
 }
 
 .start-card {
-    background: var(--wood-gradient);
-    border: 8px solid #3e2723;
-    padding: 30px;
-    border-radius: 40px;
-    text-align: center;
-    box-shadow: 0 0 50px rgba(255, 193, 7, 0.3);
-    width: 90%;
-    max-width: 500px;
+    background: var(--wood-gradient); border: 8px solid #3e2723;
+    padding: 30px; border-radius: 40px; text-align: center;
+    box-shadow: 0 0 50px rgba(255, 193, 7, 0.3); width: 90%; max-width: 500px;
 }
 
 .logo-text { font-size: clamp(2.5rem, 8vw, 4rem); color: white; margin: 0; text-shadow: 4px 4px #000; }
 .logo-text span { color: var(--gold); }
 .welcome-msg { font-size: 1.2rem; margin: 15px 0; color: #fff8e1; }
 .start-chars { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; }
-
-/* تصغير الصور في واجهة البداية */
-.mini-char { 
-    height: clamp(80px, 15vh, 120px); 
-    filter: drop-shadow(0 0 8px white); 
-}
+.mini-char { height: clamp(80px, 15vh, 120px); filter: drop-shadow(0 0 8px white); }
 
 .btn-start {
-    background: var(--gold);
-    color: #3e2723;
-    border: none;
-    padding: 15px 50px;
-    font-size: 2rem;
-    font-weight: 900;
-    border-radius: 50px;
-    cursor: pointer;
+    background: var(--gold); color: #3e2723; border: none; padding: 15px 50px;
+    font-size: 2rem; font-weight: 900; border-radius: 50px; cursor: pointer;
     box-shadow: 0 6px 0 #c79100;
-    transition: 0.2s;
 }
 
-.btn-start:hover { transform: scale(1.05); background: white; }
-
-/* الحاوية الرئيسية للعبة (تأخذ مساحة الشاشة كاملة) */
+/* اللعبة */
 .game-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-    box-sizing: border-box;
+    width: 100%; height: 100%; display: flex; flex-direction: column;
+    justify-content: space-between; padding: 15px; box-sizing: border-box;
 }
 
-/* الجزء العلوي (المستوى والاسم والنقاط) */
 .game-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.8);
-    padding: 10px 30px;
-    border-radius: 50px;
-    border: 2px solid var(--gold);
-    flex-shrink: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(0,0,0,0.8); padding: 10px 30px;
+    border-radius: 50px; border: 2px solid var(--gold);
 }
 
-.game-title { font-size: clamp(1.2rem, 4vw, 2.2rem); color: var(--gold); font-weight: 900; }
-.stat-box { font-size: clamp(1rem, 3vw, 1.5rem); font-weight: bold; }
+.main-game-area { display: flex; align-items: center; justify-content: space-around; flex: 1; gap: 15px; }
 
-/* منطقة اللعب الوسطى */
-.main-game-area {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex: 1;
-    gap: 15px;
-    min-height: 0;
-}
+.character-box { flex: 0 0 120px; display: flex; flex-direction: column; align-items: center; }
+.main-char-img { height: 30vh; max-width: 100%; object-fit: contain; animation: floating 3s ease-in-out infinite; }
 
-.character-box {
-    flex: 0 0 15%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* تنسيق صور الشخصيات داخل اللعبة */
-.main-char-img {
-    height: 35vh;
-    max-width: 100%;
-    object-fit: contain;
-    animation: floating 3s ease-in-out infinite;
-}
-
-/* تصغير صورة الرجل تحديداً كما طلبت */
-.side-right .main-char-img {
-    height: 25vh; /* أقصر من الطالب */
-    max-width: 140px;
-    animation-delay: 1.5s;
-}
-
-.speech-bubble {
-    background: white; color: black; padding: 5px 12px;
-    border-radius: 12px; font-weight: bold; margin-top: 8px;
-    font-size: 0.9rem; text-align: center;
-}
-
-/* منطقة السؤال في المنتصف */
-.question-zone {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    max-width: 60%;
-}
+/* تصغير الرجل */
+.side-right .main-char-img { height: 22vh; max-width: 110px; animation-delay: 1.5s; }
 
 .wooden-card {
-    background: var(--wood-gradient);
-    border: 6px solid #3e2723;
-    padding: 25px;
-    border-radius: 25px;
-    box-shadow: 0 12px 0 #2a1b18;
-    width: 100%;
+    background: var(--wood-gradient); border: 6px solid #3e2723;
+    padding: 25px; border-radius: 25px; box-shadow: 0 12px 0 #2a1b18; flex: 1; max-width: 600px;
 }
 
-.math-q {
-    font-size: clamp(1.5rem, 5vw, 3.2rem);
-    font-weight: 900;
-    direction: ltr;
-    text-align: center;
-    line-height: 1.3;
-}
-
+.math-q { font-size: clamp(1.4rem, 4.5vw, 3rem); font-weight: 900; direction: ltr; text-align: center; }
 .dots { color: var(--gold); border-bottom: 4px dashed var(--gold); padding: 0 8px; }
 
-/* شبكة الخيارات */
-.options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    flex-shrink: 0;
-}
-
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .option-btn {
-    background: #fff8e1;
-    border: 4px solid #5d4037;
-    border-radius: 15px;
-    padding: 18px;
-    font-size: clamp(1.1rem, 3.5vw, 1.8rem);
-    font-weight: 900;
-    color: #3e2723;
-    cursor: pointer;
-    transition: 0.2s;
+    background: #fff8e1; border: 4px solid #5d4037; border-radius: 15px;
+    padding: 15px; font-size: clamp(1rem, 3vw, 1.6rem); font-weight: 900; color: #3e2723; cursor: pointer;
 }
 
-.option-btn:hover { background: var(--gold); transform: translateY(-3px); }
-
-/* نصوص النتيجة والأزرار السفلية */
-.feedback-text { font-size: 1.5rem; height: 35px; text-align: center; font-weight: bold; }
-
-.game-footer { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.action-buttons { display: flex; gap: 15px; }
-
-.nav-btn {
-    padding: 10px 30px;
-    border-radius: 20px;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.next { background: var(--gold); color: #3e2723; }
+.nav-btn { padding: 10px 30px; border-radius: 20px; border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+.next { background: var(--gold); }
 .end { background: #e53935; color: white; }
 .reset { background: #757575; color: white; }
 
-/* الأنيميشن والخلفية */
-@keyframes floating {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
+.feedback-text { font-size: 1.4rem; height: 35px; text-align: center; font-weight: bold; }
+.speech-bubble { background: white; color: black; padding: 5px 10px; border-radius: 10px; font-size: 0.8rem; margin-top: 5px; }
 
-.stars {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    opacity: 0.3;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-}
+@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+.stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; background: url('https://www.transparenttextures.com/patterns/stardust.png'); }
 
-/* استجابة للهواتف الصغيرة */
-@media (max-width: 600px) {
-    .character-box { display: none; } /* إخفاء الصور الجانبية لتوفير مساحة للسؤال */
-    .question-zone { max-width: 100%; }
-    .options-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 600px) { .character-box { display: none; } .options-grid { grid-template-columns: 1fr; } }
